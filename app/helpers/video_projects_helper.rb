@@ -1,0 +1,2 @@
+module VideoProjectsHelper
+end

@@ -1,0 +1,11 @@
+<% content_for :title, "New video project" %>
+
+<h1>New video project</h1>
+
+<%= render "form", video_project: @video_project %>
+
+<br>
+
+<div>
+  <%= link_to "Back to video projects", video_projects_path %>
+</div>

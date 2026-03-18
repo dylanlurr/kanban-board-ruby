@@ -1,0 +1,16 @@
+<p style="color: green"><%= notice %></p>
+
+<% content_for :title, "Video projects" %>
+
+<h1>Video projects</h1>
+
+<div id="video_projects">
+  <% @video_projects.each do |video_project| %>
+    <%= render video_project %>
+    <p>
+      <%= link_to "Show this video project", video_project %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "New video project", new_video_project_path %>

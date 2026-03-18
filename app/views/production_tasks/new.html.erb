@@ -1,0 +1,11 @@
+<% content_for :title, "New production task" %>
+
+<h1>New production task</h1>
+
+<%= render "form", production_task: @production_task %>
+
+<br>
+
+<div>
+  <%= link_to "Back to production tasks", production_tasks_path %>
+</div>

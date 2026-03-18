@@ -1,0 +1,34 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @video_project %>
+
+<div class="task-list">
+  <h2>Production Tasks</h2>
+  
+  <% @video_project.production_tasks.each do |task| %>
+    <div class="task-item">
+      <%= form_with(model: task, url: production_task_path(task), method: :patch, local: true) do |f| %>
+        <%= f.check_box :completed, onchange: 'this.form.submit()' %>
+        <span class="<%= 'completed' if task.completed %>" style="<%= 'text-decoration: line-through;' if task.completed %>"><%= task.description %></span>
+      <% end %>
+    </div>
+  <% end %>
+
+  <div class="task-form">
+    <h3>Add New Task</h3>
+    <%= form_with(model: ProductionTask.new, url: production_tasks_path) do |f| %>
+      <%= f.hidden_field :video_project_id, value: @video_project.id %>
+      <div class="form-group">
+        <%= f.text_field :description, placeholder: 'Task description...', class: 'form-control', required: true %>
+      </div>
+      <%= f.submit 'Add Task', class: 'btn-primary' %>
+    <% end %>
+  </div>
+</div>
+
+<div>
+  <%= link_to "Edit this video project", edit_video_project_path(@video_project) %> |
+  <%= link_to "Back to video projects", video_projects_path %>
+
+  <%= button_to "Destroy this video project", @video_project, method: :delete %>
+</div>

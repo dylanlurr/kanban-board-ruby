@@ -1,0 +1,32 @@
+<%= form_with(model: production_task) do |form| %>
+  <% if production_task.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(production_task.errors.count, "error") %> prohibited this production_task from being saved:</h2>
+
+      <ul>
+        <% production_task.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label :description, style: "display: block" %>
+    <%= form.text_field :description %>
+  </div>
+
+  <div>
+    <%= form.label :completed, style: "display: block" %>
+    <%= form.checkbox :completed %>
+  </div>
+
+  <div>
+    <%= form.label :video_project_id, style: "display: block" %>
+    <%= form.text_field :video_project_id %>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>
