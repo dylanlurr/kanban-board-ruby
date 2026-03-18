@@ -6,7 +6,7 @@ puts "Creating video project..."
 project = VideoProject.create!(
   title: "Wireless Mouse Review",
   status: "Editing",
-  category: "Teknis",
+  category: "Technical",
   target_date: 7.days.from_now
 )
 
@@ -16,7 +16,7 @@ tasks_data = [
   { description: "Isolate voice", completed: false },
   { description: "Reduce background noise", completed: false },
   { description: "Normalize loudness", completed: false },
-  { description: "Add text overlays for Kelebihan dan kekurangan", completed: false }
+  { description: "Add text overlays for Pros and Cons", completed: false }
 ]
 
 tasks_data.each do |task|

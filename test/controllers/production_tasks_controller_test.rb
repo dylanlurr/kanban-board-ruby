@@ -20,7 +20,7 @@ class ProductionTasksControllerTest < ActionDispatch::IntegrationTest
       post production_tasks_url, params: { production_task: { completed: @production_task.completed, description: @production_task.description, video_project_id: @production_task.video_project_id } }
     end
 
-    assert_redirected_to production_task_url(ProductionTask.last)
+    assert_redirected_to video_project_url(ProductionTask.last.video_project)
   end
 
   test "should show production_task" do
@@ -35,7 +35,7 @@ class ProductionTasksControllerTest < ActionDispatch::IntegrationTest
 
   test "should update production_task" do
     patch production_task_url(@production_task), params: { production_task: { completed: @production_task.completed, description: @production_task.description, video_project_id: @production_task.video_project_id } }
-    assert_redirected_to production_task_url(@production_task)
+    assert_redirected_to video_project_url(@production_task.video_project)
   end
 
   test "should destroy production_task" do

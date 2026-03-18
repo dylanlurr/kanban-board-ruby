@@ -1,12 +1,8 @@
-<% content_for :title, "Editing video project" %>
-
-<h1>Editing video project</h1>
-
-<%= render "form", video_project: @video_project %>
-
-<br>
-
-<div>
-  <%= link_to "Show this video project", @video_project %> |
-  <%= link_to "Back to video projects", video_projects_path %>
+<div style="padding: 2rem 0;">
+  <%= render "form", video_project: @video_project %>
+  
+  <div style="text-align: center; margin-top: 1rem; display: flex; gap: 1.5rem; justify-content: center;">
+    <%= link_to "View Project", @video_project, class: "nav-link" %>
+    <%= link_to "Back to Board", root_path, class: "nav-link" %>
+  </div>
 </div>

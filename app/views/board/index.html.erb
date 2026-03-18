@@ -1,53 +1,22 @@
 <div class="kanban-wrapper">
   <div class="kanban-header">
     <h1>Content Creator's Kanban Board</h1>
-    <%= link_to 'New Project', new_video_project_path, class: 'btn-primary' %>
+    <%= link_to new_video_project_path, class: 'btn btn-primary', style: 'display: flex; align-items: center; gap: 0.5rem;' do %>
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+      Add Project
+    <% end %>
   </div>
 
   <div class="kanban-board">
-    <div class="kanban-column">
-      <h2>Planning</h2>
-      <div class="kanban-cards">
-        <% @planning.each do |project| %>
-          <%= render 'kanban_card', project: project %>
-        <% end %>
+    <% VideoProject::STATUSES.each do |status| %>
+      <div class="kanban-column">
+        <h2><%= status %></h2>
+        <div class="kanban-cards">
+          <% (@projects_by_status[status] || []).each do |project| %>
+            <%= render 'kanban_card', project: project %>
+          <% end %>
+        </div>
       </div>
-    </div>
-    
-    <div class="kanban-column">
-      <h2>Scripting</h2>
-      <div class="kanban-cards">
-        <% @scripting.each do |project| %>
-          <%= render 'kanban_card', project: project %>
-        <% end %>
-      </div>
-    </div>
-    
-    <div class="kanban-column">
-      <h2>Filming</h2>
-      <div class="kanban-cards">
-        <% @filming.each do |project| %>
-          <%= render 'kanban_card', project: project %>
-        <% end %>
-      </div>
-    </div>
-    
-    <div class="kanban-column">
-      <h2>Editing</h2>
-      <div class="kanban-cards">
-        <% @editing.each do |project| %>
-          <%= render 'kanban_card', project: project %>
-        <% end %>
-      </div>
-    </div>
-    
-    <div class="kanban-column">
-      <h2>Published</h2>
-      <div class="kanban-cards">
-        <% @published.each do |project| %>
-          <%= render 'kanban_card', project: project %>
-        <% end %>
-      </div>
-    </div>
+    <% end %>
   </div>
 </div>

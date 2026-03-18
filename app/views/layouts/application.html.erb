@@ -19,11 +19,28 @@
     <link rel="apple-touch-icon" href="/icon.png">
 
     <%# Includes all stylesheet files in app/assets/stylesheets %>
-    <%= stylesheet_link_tag :app, "data-turbo-track": "reload" %>
+    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <%= stylesheet_link_tag "board", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
   </head>
 
   <body>
-    <%= yield %>
+    <nav class="navbar">
+      <%= link_to "CreatorBoard", root_path, class: "nav-brand" %>
+      <div class="nav-links">
+        <%= link_to "Kanban View", root_path, class: "nav-link" %>
+        <%= link_to "Projects", video_projects_path, class: "nav-link" %>
+      </div>
+    </nav>
+
+    <main class="main-container">
+      <% if notice.present? %>
+        <div style="background: rgba(16, 185, 129, 0.1); color: #34d399; padding: 1rem; border-radius: 8px; border: 1px solid rgba(16, 185, 129, 0.2); margin-bottom: 1rem; text-align: center;">
+          <%= notice %>
+        </div>
+      <% end %>
+      
+      <%= yield %>
+    </main>
   </body>
 </html>

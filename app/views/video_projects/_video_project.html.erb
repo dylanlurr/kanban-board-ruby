@@ -1,22 +1,18 @@
-<div id="<%= dom_id video_project %>">
-  <div>
-    <strong>Title:</strong>
-    <%= video_project.title %>
+<div id="<%= dom_id video_project %>" class="project-header-card">
+  <h1 class="project-title"><%= video_project.title %></h1>
+  
+  <div class="project-meta">
+    <div class="meta-item">
+      <span>Status:</span>
+      <span class="status-badge"><%= video_project.status %></span>
+    </div>
+    <div class="meta-item">
+      <span>Category:</span>
+      <strong><%= video_project.category %></strong>
+    </div>
+    <div class="meta-item">
+      <span>Target Date:</span>
+      <strong><%= video_project.target_date&.strftime('%B %d, %Y') %></strong>
+    </div>
   </div>
-
-  <div>
-    <strong>Status:</strong>
-    <%= video_project.status %>
-  </div>
-
-  <div>
-    <strong>Target date:</strong>
-    <%= video_project.target_date %>
-  </div>
-
-  <div>
-    <strong>Category:</strong>
-    <%= video_project.category %>
-  </div>
-
 </div>

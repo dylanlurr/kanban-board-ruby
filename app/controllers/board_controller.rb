@@ -1,9 +1,5 @@
 class BoardController < ApplicationController
   def index
-    @planning = VideoProject.where(status: 'Planning')
-    @scripting = VideoProject.where(status: 'Scripting')
-    @filming = VideoProject.where(status: 'Filming')
-    @editing = VideoProject.where(status: 'Editing')
-    @published = VideoProject.where(status: 'Published')
+    @projects_by_status = VideoProject.all.group_by(&:status)
   end
 end
